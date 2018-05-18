@@ -1,0 +1,208 @@
+﻿<Window x:Class="Fb_InstaWpf.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="350" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded" >
+    <Grid>
+
+        <Grid  HorizontalAlignment="Left" Height="44" Margin="0,0,0,275" VerticalAlignment="Stretch" Width="792">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF9E847E" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Button x:Name="btnExit"  HorizontalAlignment="Left" Margin="765,12,0,0" VerticalAlignment="Top" Width="23" Height="22" Background="{x:Null}" Click="btnExit_Click">
+                <Image Source="Images/if_cross-button_45933.png"></Image>
+            </Button>
+            <Button x:Name="btnMaximize" HorizontalAlignment="Left" Margin="740,12,0,0" VerticalAlignment="Top" Width="23" Height="22" Background="{x:Null}" Click="btnMaximize_Click">
+                <Image Source="Images/2123874-16 (1).png"/>
+            </Button>
+            <Button x:Name="btnMinimize" HorizontalAlignment="Left" Margin="715,12,0,10" Width="23" Background="{x:Null}" Click="btnMinimize_Click">
+                <Image Source="Images/minimize-window-16.png"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left"  Margin="357,13,0,0" TextWrapping="Wrap" Text="Fb_Insta Comment Posting" VerticalAlignment="Top" Width="156" Height="21" Foreground="White" FontWeight="Bold"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="270" Margin="0,49,0,0" VerticalAlignment="Top" Width="792">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="371*"/>
+                <ColumnDefinition Width="421*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="13*"/>
+                <RowDefinition Height="77*"/>
+            </Grid.RowDefinitions>
+            <TabControl HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="792" Margin="0,34,0,-4" Grid.RowSpan="2" Grid.ColumnSpan="2">
+
+                <TabItem Header="Messenger" FontWeight="Bold" Background="DeepSkyBlue">
+                    <Grid Background="#FFE5E5E5" Margin="0,-1,0,1">
+                        <RichTextBox x:Name="RichTextBoxmsngr"  HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="173">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run x:Name="msgtxtbox2" Text=""/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                        <DataGrid x:Name="dataGrid1" SelectionMode="Single" Height="172" Width="Auto" RowBackground="LightGray" Margin="178,0,0,40" AlternatingRowBackground="White" AutoGenerateColumns="False" CanUserAddRows="False" >
+
+                            <DataGrid.Resources>
+                                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#FF786460" />
+
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="FontSize" Value="15"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn x:Name="DgcoColumn1" Width="100">
+                                    <DataGridCheckBoxColumn.Header>
+                                        <CheckBox x:Name="CheckBox1"  />
+                                    </DataGridCheckBoxColumn.Header>
+                                </DataGridCheckBoxColumn>
+                                <DataGridTextColumn x:Name="DgcoColumn2" Header="Id" Width="*" Binding="{Binding Id}"/>
+                                <DataGridTextColumn x:Name="DgcoColumn3" Header="Message" Width="*" Binding="{Binding Message}"/>
+                                <DataGridTextColumn x:Name="DgcoColumn4" Header="Url" Width="*" Binding="{Binding PageUrl}"/>
+                                <!--<DataGridTemplateColumn x:Name="DgcoColumn5" Header="Delete" Width="*" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="Image/editor_trash_delete_recycle_bin_-128.png" Height="22"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>-->
+
+                                <!--<DataGridTextColumn   Width="*" />
+                                <DataGridTextColumn   Width="*"/>
+                                <DataGridTextColumn   Width="*"/>
+                                <DataGridTextColumn   Width="*" />-->
+                            </DataGrid.Columns>
+
+
+                        </DataGrid>
+
+                        <!--<DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"  HorizontalAlignment="Left" Height="172" Width="596" Margin="190,0,0,0" VerticalAlignment="Top" FrozenColumnCount="3"  Grid.Row="1">
+                            <DataGrid.Columns>
+
+                                <DataGridCheckBoxColumn Header="Select" Width="auto"  >
+
+                                </DataGridCheckBoxColumn>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="100*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="100*"/>
+                                <DataGridTextColumn Header="Url" Binding="{Binding PageUrl}" Width="310*"/>
+
+
+                            </DataGrid.Columns>
+
+
+
+                        </DataGrid>-->
+                        <!--<DataGrid x:Name="DataGrid1"  AutoGenerateColumns="False" VerticalAlignment="Top" Height="172" Width="596" VerticalGridLinesBrush="#FFD8D8D8" Margin="190,0,0,0">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="Select"   Width="100*"/>
+                                <DataGridTextColumn Header="MessageId" Binding="{Binding Id}" Width="100*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="100*"/>
+                                <DataGridTextColumn Header="MessageUrl" Binding="{Binding PageUrl}" Width="100*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>-->
+                        <!--<DataGrid x:Name="DataGrid1" HorizontalAlignment="Left" AutoGenerateColumns="True"  VerticalAlignment="Top" Height="172" Width="596" VerticalGridLinesBrush="#FFD8D8D8" Margin="190,0,0,0">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.Header>
+                                        <CheckBox x:Name="CheckBox1"/>
+                                    </DataGridTemplateColumn.Header>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn x:Name="ColumnMessageId" Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="MessageId"/>
+                                <DataGridTextColumn x:Name="ColumnMessage" Binding="{Binding Message}" ClipboardContentBinding="{x:Null}" Header="Message"/>
+                                <DataGridTextColumn x:Name="ColumnMessageUrl" Binding="{Binding PageUrl}" ClipboardContentBinding="{x:Null}" Header="MessageUrl"/>
+                            </DataGrid.Columns>
+                            <DataGrid.HorizontalGridLinesBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="Black" Offset="0.013"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                    <GradientStop Color="#FF999696" Offset="0.895"/>
+                                </LinearGradientBrush>
+                            </DataGrid.HorizontalGridLinesBrush>
+                        </DataGrid>-->
+                        <Button x:Name="TxtBlock_deletedSelected" HorizontalAlignment="Left" Margin="628,177,0,0"  Height="35" VerticalAlignment="Top" Width="158" Click="Test_Click" >
+                            <StackPanel Orientation="Horizontal" Height="28">
+                                <Image VerticalAlignment="Bottom" HorizontalAlignment="Left" Source="Images/if_Facebook_Messenger_1298720.png" Height="22" Margin="0,0,0,2" RenderTransformOrigin="0.227,0.636"/>
+                                <Label x:Name="Txt_deletedSelected" VerticalContentAlignment="Center" HorizontalAlignment="Right" Padding="0" Content="My Button Text" FontWeight="Bold" Height="28" VerticalAlignment="Top"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Content="Send Photo on FbMessenger" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="386,177,0,0" Width="199" FontWeight="Bold" Background="#FFA9C6DE" Click="Button_Click_1"/>
+                        <Button x:Name="testEmoji_Copy" Content="Send Emoji on FbMsngr" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="190,177,0,0" VerticalAlignment="Top" Height="35" Width="158" Click="testEmoji_Click" FontWeight="Bold" />
+
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Fb Comment" FontWeight="Bold" Background="DarkSlateBlue">
+                    <Grid Background="#FFE5E5E5" Height="211" VerticalAlignment="Top">
+                        <RichTextBox HorizontalAlignment="Left" Height="201" VerticalAlignment="Top" Width="173" Margin="10,0,0,0">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run x:Name="msgtxtbox1" Text=""/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                        <DataGrid x:Name="DataGrid2" HorizontalAlignment="Left" AutoGenerateColumns="True"  VerticalAlignment="Top" Height="159" Width="596" VerticalGridLinesBrush="#FFD8D8D8" Margin="190,0,0,0">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.Header>
+                                        <CheckBox x:Name="CheckBox2"/>
+                                    </DataGridTemplateColumn.Header>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="MessageId"/>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Message"/>
+                            </DataGrid.Columns>
+                            <DataGrid.HorizontalGridLinesBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="Black" Offset="0.013"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                    <GradientStop Color="#FF999696" Offset="0.895"/>
+                                </LinearGradientBrush>
+                            </DataGrid.HorizontalGridLinesBrush>
+                        </DataGrid>
+                        <Button Content="Send Photo on FbMessenger" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="587,164,0,0" VerticalAlignment="Top" Width="199" Height="35" FontWeight="Bold" Background="#FFA9C6DE" Click="Button_Click_1"/>
+                        <Button x:Name="testEmoji" Content="Send Emoji on FbMsngr" HorizontalAlignment="Left" Margin="190,164,0,0" VerticalAlignment="Top" Height="35" Width="158" Click="testEmoji_Click" FontWeight="Bold" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="INsta Comment" FontWeight="Bold" Background="Orange" HorizontalAlignment="Left" Width="104">
+                    <Grid Background="#FFE5E5E5">
+                        <RichTextBox x:Name="RichTextBoxinsta"  HorizontalAlignment="Left" Height="186" VerticalAlignment="Top" Width="173" Margin="8,13,0,0">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run x:Name="msgtxtbox3" Text=""/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                        <DataGrid x:Name="DataGrid3" HorizontalAlignment="Left" AutoGenerateColumns="True"  VerticalAlignment="Top" Height="158" Width="596" VerticalGridLinesBrush="#FFD8D8D8" Margin="190,0,0,0">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.Header>
+                                        <CheckBox x:Name="CheckBox3"/>
+                                    </DataGridTemplateColumn.Header>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="MessageId"/>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Message"/>
+                            </DataGrid.Columns>
+                            <DataGrid.HorizontalGridLinesBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="Black" Offset="0.013"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                    <GradientStop Color="#FF999696" Offset="0.895"/>
+                                </LinearGradientBrush>
+                            </DataGrid.HorizontalGridLinesBrush>
+                        </DataGrid>
+                        <Button x:Name="Btninsta" Content="Comment Insta" HorizontalAlignment="Left" Margin="618,164,0,0" VerticalAlignment="Top" Height="35" Width="158" Click="Btninsta_Click" />
+                    </Grid>
+                </TabItem>
+
+
+
+            </TabControl>
+            <Button x:Name="ButtonFbLogin" Content="LoginFb" Height="35" Width="158" HorizontalAlignment="Left" Margin="0,-1,0,0" VerticalAlignment="Top" Background="#FF043180" Foreground="White" FontWeight="Bold" FontSize="16" BorderThickness="1" Click="ButtonFbLogin_Click"/>
+        </Grid>
+
+
+
+    </Grid>
+</Window>
