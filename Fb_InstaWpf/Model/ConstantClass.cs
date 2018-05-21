@@ -14,6 +14,8 @@ namespace Fb_InstaWpf.Model
 
         public static string ConnectrionString { get; set; }
 
+        public static string DBDirectory = "DBFbInstaComment";
+        public static string DBFileName = "FbInstaCommentDb.s3db";
         
     }
 }

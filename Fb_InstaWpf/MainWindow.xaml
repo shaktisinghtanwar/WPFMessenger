@@ -32,6 +32,8 @@
                 <Border   BorderThickness="1" BorderBrush="WhiteSmoke" Background="WhiteSmoke" CornerRadius="10">
                 <TextBlock HorizontalAlignment="Left" Text="{Binding Message}" Background="LightGray" TextAlignment="Right" TextWrapping="Wrap"></TextBlock>
                     </Border>
+                    <TextBlock HorizontalAlignment="Left" Text="{Binding Message}" Background="LightGray" TextAlignment="Right" TextWrapping="Wrap"></TextBlock>
+                </Border>
             </Grid>
 
         </DataTemplate>

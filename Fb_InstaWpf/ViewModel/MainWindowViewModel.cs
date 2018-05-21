@@ -18,6 +18,7 @@ using Fb_InstaWpf.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using HtmlAgilityPack;
+using System.Data.SQLite;
 
 namespace Fb_InstaWpf.ViewModel
 {
@@ -49,6 +50,10 @@ namespace Fb_InstaWpf.ViewModel
         private readonly Queue<string> _queueInstaImgUrl = new Queue<string>();
         private readonly Queue<string> _queueFbImgUrl = new Queue<string>();
         public List<String> LstPageUrl = new List<string>();
+        
+
+       // private string sqliteDatabase = @"Data Source=FbInstaCommentDb.s3db;";
+
 
         #endregion
 
@@ -68,10 +73,28 @@ namespace Fb_InstaWpf.ViewModel
             FbMessengerListCommand = new DelegateCommand(FbMessengerListCommandHandler,null);
             IntaInboxCommand = new DelegateCommand(IntaInboxCommandHandler,null);
             FbPageInboxCommand = new DelegateCommand(FbPageInboxCommandHandler, null);
+            SendimageCommand = new DelegateCommand(SendImageCommandHandler, null);
             
         }
+
+        private void SendImageCommandHandler(object obj)
+        {
+
+            ReadOnlyCollection<IWebElement> emailElement = ChromeWebDriver.FindElements(By.ClassName("_4dvy"));
+            if (emailElement.Count > 0)
+            {
+                emailElement[0].Click();
+            }
+            Thread.Sleep(3000);
+
+            ReadOnlyCollection<IWebElement> sendimage = ChromeWebDriver.FindElements(By.ClassName("_4dw3"));
+            if (sendimage.Count > 0)
+            {
+                sendimage[0].Click();
+            }           
+        }
         
-        private void FbPageInboxCommandHandler(object obj)
+         private void FbPageInboxCommandHandler(object obj)
         {
             try
             {
@@ -152,6 +175,63 @@ namespace Fb_InstaWpf.ViewModel
                 throw;
             }
         }
+
+       //private void FbPageInboxCommandHandler(object obj)
+       //  {
+       //     try
+       //     {
+       //         string url = "https://www.facebook.com/TP-1996120520653285/inbox/?selected_item_id=1996233970641940";
+       //         ChromeWebDriver.Navigate().GoToUrl(url);
+                     
+       //                 Thread.Sleep(2000);
+       //                 ReadOnlyCollection<IWebElement> collectionTab2 = ChromeWebDriver.FindElements(By.ClassName("_32wr"));
+       //                 if (collectionTab2.Count > 0)
+       //                 {
+       //                     collectionTab2[1].Click();
+       //                 }
+       //                 Thread.Sleep(2000);
+       //                 PageSource = ChromeWebDriver.PageSource;
+       //                 _htmlDocument.LoadHtml(PageSource);
+       //                 HtmlNodeCollection imgNode =
+       //                     _htmlDocument.DocumentNode.SelectNodes(
+       //                         "//*[@id='u_0_t']/div/div/div/table/tbody/tr/td[1]/div/div[2]/div/div[1]/div/div/div/div/div/div/img");
+       //                 if (imgNode != null)
+       //                 {
+       //                     foreach (var imgNodeItem in imgNode)
+       //                     {
+       //                         Getimgurl = imgNodeItem.Attributes["src"].Value.Replace(";", "&");
+
+       //                         _queueFbImgUrl.Enqueue(Getimgurl);
+       //                     }
+       //                 }
+                        
+                   
+       //             var listNodeElements =
+       //           _htmlDocument.DocumentNode.SelectNodes("//div[@class='_4ik4 4ik5']");
+       //             if (listNodeElements != null)
+       //             {
+       //                 for (int j = 0; j < listNodeElements.Count; j++)
+       //                 {
+       //                     if (j % 2 == 0)
+       //                     {
+       //                         LstfbItemUserName = listNodeElements[j].ChildNodes[0].InnerText;
+       //                         var imgUrl = _queueFbImgUrl.Dequeue();
+
+       //                         FbPageListmembers.Add(new FacebookPageInboxmember { FbPageImage = imgUrl, FbPageName = LstfbItemUserName });
+       //                     }
+       //                 }
+       //             }
+                   
+               
+              
+               
+       //     }
+       //     catch (Exception)
+       //     {
+                    
+       //         throw;
+       //     }
+       // }
        
         
 
@@ -210,8 +290,6 @@ namespace Fb_InstaWpf.ViewModel
             InstaListmembers.Add(new InstaInboxmember { InstaInboxUserName = "Instagram Page1 Post", InstaInboxUserImage = "E:\\RAHUL_WORK\\WPF_Examples\\Fb_InstaWpf12052018\\Fb_InstaWpf\\Fb_InstaWpf\\Images\\download.jpg" });
             InstaListmembers.Add(new InstaInboxmember { InstaInboxUserName = "Instagram Page2 Post", InstaInboxUserImage = "E:\\RAHUL_WORK\\WPF_Examples\\Fb_InstaWpf12052018\\Fb_InstaWpf\\Fb_InstaWpf\\Images\\download.jpg" });
         }
-
-
         private void LoginCommandHandler(object obj)
         {
 
@@ -221,7 +299,6 @@ namespace Fb_InstaWpf.ViewModel
 
                 // string appStartupPath = Path.Combine(Environment.CurrentDirectory);
                 const string url = "https://en-gb.facebook.com/login/";
-
                 _options.AddArgument("--disable-notifications");
                 _options.AddArgument("--disable-extensions");
                 _options.AddArgument("--test-type");
@@ -247,15 +324,18 @@ namespace Fb_InstaWpf.ViewModel
 
                     emailElement[0].SendKeys("rishusingh77777@gmail.com");
                     //emailElement[0].SendKeys(TextBoxUserEmail.Text);
-
+                 
+                    //CurrentLogedInFacebookUserinfo.Username = facebookUserinfo.Username
                 }
                 ReadOnlyCollection<IWebElement> passwordElement = ChromeWebDriver.FindElements(By.Id("pass"));
                 if (passwordElement.Count > 0)
                 {
                     passwordElement[0].SendKeys("1234567#rk");
                     //passwordElement[0].SendKeys(TextBox_Password.Text);
-
+                    
                 }
+                
+         
                 ReadOnlyCollection<IWebElement> signInElement = ChromeWebDriver.FindElements(By.Id("loginbutton"));
                 if (signInElement.Count > 0)
                 {
@@ -399,6 +479,8 @@ namespace Fb_InstaWpf.ViewModel
         public DelegateCommand FbMessengerListCommand { get; set; }
         public DelegateCommand FbPageInboxCommand { get; set; }
         public DelegateCommand IntaInboxCommand { get; set; }
+
+        public DelegateCommand SendimageCommand { get; set; }
        
 
         #endregion

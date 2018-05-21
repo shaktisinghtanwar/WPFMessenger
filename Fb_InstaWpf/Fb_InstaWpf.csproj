@@ -110,6 +110,7 @@
     <Compile Include="Helper\SqLiteHelper.cs" />
     <Compile Include="Model\FbpageInboxUserInfo.cs" />
     <Compile Include="Model\FBUserMessageInfocs.cs" />
+    <Compile Include="Model\RequestModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="UpdateMyDelegatedelegate.cs" />
     <Compile Include="UpdateMyDelegatedelegate_2.cs" />
@@ -155,6 +156,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="DB\FbInstaCommentDb.s3db" />
+    <None Include="DBFbInstaComment\FbInstaCommentDb.s3db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
