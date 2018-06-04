@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Fb_InstaWpf.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -47,4 +49,83 @@ namespace Fb_InstaWpf.Model
            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
        }
     }
+
+
+    public class FacebookUserLoginInfo
+    {
+        public string UserId { get; set; }
+        public string Password { get; set; }
+        public string LoginUserName { get; set; }
+        
+    }
+
+    public class UserMsgTabItem: BaseViewModel
+    {
+       
+        public string Header { get; set; }
+        public string HeaderFb { get; set; }
+        public string HeaderInsta { get; set;}
+        private ObservableCollection<FbUserMessageInfo> messagingListInfo { get; set; }
+        public ObservableCollection<FbUserMessageInfo> MessagingListInfo
+        {
+
+            get { return messagingListInfo; }
+            set
+            {
+                messagingListInfo = value;
+              
+                OnPropertyChanged("MessagingListInfo");
+
+            }
+        }
+
+     
+
+        
+    }
+
+
+    public class UserFbMsgTabItem : BaseViewModel
+    {
+        public string Header { get; set; }
+        public string HeaderFb { get; set; }
+        //public string HeaderInsta { get; set; }
+        private ObservableCollection<FbUserMessageInfo> messagingListInfo { get; set; }
+        public ObservableCollection<FbUserMessageInfo> MessagingListInfo
+        {
+
+            get { return messagingListInfo; }
+            set
+            {
+                messagingListInfo = value;
+                OnPropertyChanged("MessagingListInfo");
+
+            }
+        }
+
+       
+
+    }
+
+    public class UserInstaMsgTabItem : BaseViewModel
+    {
+        //public string Header { get; set; }
+        //public string HeaderFb { get; set; }
+        public string HeaderInsta { get; set; }
+        private ObservableCollection<FbUserMessageInfo> messagingListInfo { get; set; }
+        public ObservableCollection<FbUserMessageInfo> MessagingListInfo
+        {
+
+            get { return messagingListInfo; }
+            set
+            {
+                messagingListInfo = value;
+                OnPropertyChanged("MessagingListInfo");
+
+            }
+        }
+       
+       
+    }
+
 }

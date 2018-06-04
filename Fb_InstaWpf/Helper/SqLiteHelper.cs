@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Fb_InstaWpf.Model;
@@ -12,13 +13,14 @@ namespace Fb_InstaWpf.Helper
 {
     class SqLiteHelper
     {
+        string appStartupPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/DBFbInstaComment/FbInstaCommentDb.s3db";
         public String DbConnection { get; set; }
         /// <summary>
         ///     Default Constructor for SQLiteDatabase Class.
         /// </summary>
         public SqLiteHelper()
         {
-            DbConnection = String.Format("Data Source={0}", ConstantClass.ConnectrionString);
+            DbConnection = String.Format("Data Source={0}", appStartupPath);
         }
 
         public int ExecuteNonQuery(StringBuilder sql)
